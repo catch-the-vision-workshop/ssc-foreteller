@@ -47,8 +47,8 @@ app.get("/getForecast", async (req, res) => {
 			textColor = "red";
 		}
 
-		// Calculate moisture level, divide by 10 and round up
-		const moistLevel = Math.ceil(data.current.humidity / 10);
+		// Calculate moisture level, divide by 10
+		const moistLevel = data.current.humidity / 10;
 
 		// Structure and send the response data
 		res.json({
