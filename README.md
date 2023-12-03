@@ -12,6 +12,7 @@ We will be creating our very own weather forecast application. We will be coveri
 
 - Your main job is to modify the file `frontend/code.js` and `frontend/index.html` to match the requirements below
 - You can test the program by using [Live Server VSCode extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  - Open `frontend/index.html`, then right click anywhere on the editor and choose "Open with Live Server"
 - Replace the content inside function `getForecast()` with the code below **after** the backend team has finished:
   ```js
   try {
@@ -35,8 +36,10 @@ We will be creating our very own weather forecast application. We will be coveri
 
 - Your main job is to modify `backend/index.js` to aggregate the data retrieved from WeatherAPI.com and send it to the frontend
 - You can test the program by running the command
+  - `cd backend`
   - `npm i` (only for the first time you're running the program)
   - `npm run start`
+  - You should be able to access the application by typing `http://localhost:3000/getForecast` in your browser
 
 ## Requirements
 
