@@ -58,9 +58,9 @@ cityForm.onsubmit = async function (event) {
 	} else if (forecastData.moonPhase === "Waning Gibbous") {
 		moonPhaseEmojis = "🌖";
 	} else if (forecastData.moonPhase === "Last Quarter") {
-		moistLevelEmojis = "🌗";
+		moonPhaseEmojis = "🌗";
 	} else if (forecastData.moonPhase === "Waning Crescent") {
-		moistLevelEmojis = "🌘"
+		moonPhaseEmojis = "🌘"
 	}
 
 	// Construct HTML content to display the forecast data
