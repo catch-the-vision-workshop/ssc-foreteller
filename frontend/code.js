@@ -74,10 +74,10 @@ cityForm.onsubmit = async function (event) {
                 Avg. ${forecastData.averageTemp.toFixed(2)}&#8451;
             </span>
 			<span class="text-center text-xl">
-                Min. ${forecastData.maxTemp.toFixed(2)}&#8451;
+                Min. ${forecastData.minTemp.toFixed(2)}&#8451;
             </span>
 			<span class="text-center text-xl">
-                Max. ${forecastData.minTemp.toFixed(2)}&#8451;
+                Max. ${forecastData.maxTemp.toFixed(2)}&#8451;
             </span>
         </div>
         <div>Chance of rain: ${forecastData.chanceOfRain}%</div>

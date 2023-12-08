@@ -29,8 +29,6 @@ app.get("/getForecast", async (req, res) => {
 	}
 
 	// Fetch data from the weather API
-	// Documentation: https://www.weatherapi.com/docs/
-	// Explorer: https://www.weatherapi.com/api-explorer.aspx#forecast
 	const weatherAPIUrl = `http://api.weatherapi.com/v1/forecast.json?key=d7e1b78d9b70431c8a5141651230212&q=${cityName}&days=1&aqi=no&alerts=no`;
 
 	try {
@@ -61,7 +59,7 @@ app.get("/getForecast", async (req, res) => {
 		let minTemp = Infinity;
 
 		for (let i = 0; i < hours.length; i++) {
-			const temp = hours[i].temp_c; // Assuming we're using Celsius
+			const temp = hours[i].temp_c;
 			sumTemp += temp;
 
 			if (temp > maxTemp) {
