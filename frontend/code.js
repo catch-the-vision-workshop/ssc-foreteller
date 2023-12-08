@@ -37,12 +37,12 @@ cityForm.onsubmit = async function (event) {
 		return;
 	}
 
-    // Loop through the number of times indicated by 'result.moistLevel' and append water drop emojis
+	// Loop through the number of times indicated by 'result.moistLevel' and append water drop emojis
 	let moistLevelEmojis = "";
 	for (let i = 0; i < forecastData.moistLevel; i++) {
 		moistLevelEmojis += "💧";
 	}
-	
+
 	// Determine which moon phase emoji to use based on 'forecast.moonPhase'
 	let moonPhaseEmojis = "";
 	if (forecastData.moonPhase === "New Moon") {
@@ -60,7 +60,7 @@ cityForm.onsubmit = async function (event) {
 	} else if (forecastData.moonPhase === "Last Quarter") {
 		moonPhaseEmojis = "🌗";
 	} else if (forecastData.moonPhase === "Waning Crescent") {
-		moonPhaseEmojis = "🌘"
+		moonPhaseEmojis = "🌘";
 	}
 
 	// Construct HTML content to display the forecast data
@@ -70,10 +70,21 @@ cityForm.onsubmit = async function (event) {
             <span style="color: ${forecastData.textColor}" class="text-center font-bold text-2xl">
                 ${forecastData.temperature}&#8451;
             </span>
+			<span class="text-center text-xl">
+                Avg. ${forecastData.averageTemp.toFixed(2)}&#8451;
+            </span>
+			<span class="text-center text-xl">
+                Min. ${forecastData.maxTemp.toFixed(2)}&#8451;
+            </span>
+			<span class="text-center text-xl">
+                Max. ${forecastData.minTemp.toFixed(2)}&#8451;
+            </span>
         </div>
         <div>Chance of rain: ${forecastData.chanceOfRain}%</div>
         <div>Moist Level: ${moistLevelEmojis}</div>
         <div>Moon Phase: ${moonPhaseEmojis}</div>
+		<div>UV Index Max: ${forecastData.maxUVIndex}</div>
+		<div>Max UV Index Time: ${forecastData.maxUVTime}</div>
     `;
 
 	// Update the inner HTML of the element with ID 'result' to display the constructed HTML content

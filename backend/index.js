@@ -29,6 +29,8 @@ app.get("/getForecast", async (req, res) => {
 	}
 
 	// Fetch data from the weather API
+	// Documentation: https://www.weatherapi.com/docs/
+	// Explorer: https://www.weatherapi.com/api-explorer.aspx#forecast
 	const weatherAPIUrl = `http://api.weatherapi.com/v1/forecast.json?key=d7e1b78d9b70431c8a5141651230212&q=${cityName}&days=1&aqi=no&alerts=no`;
 
 	try {
@@ -50,6 +52,43 @@ app.get("/getForecast", async (req, res) => {
 		// Calculate moisture level, divide by 10
 		const moistLevel = data.current.humidity / 10;
 
+		// Calculate average, max, and min temperature
+		const forecastDay = data.forecast.forecastday[0];
+		const hours = forecastDay.hour;
+
+		let sumTemp = 0;
+		let maxTemp = -Infinity;
+		let minTemp = Infinity;
+
+		for (let i = 0; i < hours.length; i++) {
+			const temp = hours[i].temp_c; // Assuming we're using Celsius
+			sumTemp += temp;
+
+			if (temp > maxTemp) {
+				maxTemp = temp;
+			}
+
+			if (temp < minTemp) {
+				minTemp = temp;
+			}
+		}
+
+		const averageTemp = sumTemp / hours.length;
+
+		// Find the maximum UV index
+		let maxUVIndex = 0;
+		let maxUVTime = "";
+
+		for (let i = 0; i < hours.length; i++) {
+			const uvIndex = hours[i].uv;
+			const time = hours[i].time;
+
+			if (uvIndex > maxUVIndex) {
+				maxUVIndex = uvIndex;
+				maxUVTime = time;
+			}
+		}
+
 		// Structure and send the response data
 		res.json({
 			city: data.location.name,
@@ -59,6 +98,12 @@ app.get("/getForecast", async (req, res) => {
 			textColor,
 			moistLevel,
 			moonPhase: data.forecast.forecastday[0].astro.moon_phase,
+			averageTemp,
+			maxTemp,
+			minTemp,
+			maxUVIndex,
+			maxUVTime,
+			// Add your own data here for extra points! Please be sure to coordinate with your frontend team members.
 		});
 	} catch (error) {
 		console.error("Error fetching data from Weather API:", error);
