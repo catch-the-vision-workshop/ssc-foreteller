@@ -65,27 +65,43 @@ cityForm.onsubmit = async function (event) {
 
 	// Construct HTML content to display the forecast data
 	const resultHTML = `
-        <div class=\"flex flex-col items-center justify-center\">
-			<span>Current temperature in ${forecastData.city} is:</span>
-            <span style="color: ${forecastData.textColor}" class="text-center font-bold text-2xl">
-                ${forecastData.temperature}&#8451;
-            </span>
-			<span class="text-center text-xl">
-                Avg. ${forecastData.averageTemp.toFixed(2)}&#8451;
-            </span>
-			<span class="text-center text-xl">
-                Min. ${forecastData.minTemp.toFixed(2)}&#8451;
-            </span>
-			<span class="text-center text-xl">
-                Max. ${forecastData.maxTemp.toFixed(2)}&#8451;
-            </span>
-        </div>
-        <div>Chance of rain: ${forecastData.chanceOfRain}%</div>
-        <div>Moist Level: ${moistLevelEmojis}</div>
-        <div>Moon Phase: ${moonPhaseEmojis}</div>
-		<div>UV Index Max: ${forecastData.maxUVIndex}</div>
-		<div>Max UV Index Time: ${forecastData.maxUVTime}</div>
-    `;
+	<div class="flex flex-col items-center justify-center rounded-lg p-4">
+		<h2 class="text-xl font-semibold mb-2">Weather in ${forecastData.city}</h2>
+		<div class="flex items-center justify-center space-x-4 mb-4">
+			<p class="text-lg" style="color: ${forecastData.textColor}">Current Temp: ${forecastData.temperature}&#8451;</p>
+		</div>
+		<div class="grid grid-cols-3 gap-4 mb-4 text-center">
+			<div>
+				<img src="../img/icon-temp.png" alt="Average Temperature" class="h-6 w-6 mx-auto"/>
+				<p>Avg: ${forecastData.averageTemp.toFixed(2)}&#8451;</p>
+			</div>
+			<div>
+				<img src="../img/icon-cold.png" alt="Minimum Temperature" class="h-6 w-6 mx-auto"/>
+				<p>Min: ${forecastData.minTemp.toFixed(2)}&#8451;</p>
+			</div>
+			<div>
+				<img src="../img/icon-hot.png" alt="Maximum Temperature" class="h-6 w-6 mx-auto"/>
+				<p>Max: ${forecastData.maxTemp.toFixed(2)}&#8451;</p>
+			</div>
+		</div>
+		<div class="flex items-center justify-center space-x-4 mb-4">
+			<img src="../img/icon-rain.png" alt="Rain" class="h-6 w-6"/>
+			<p>Chance of Rain: ${forecastData.chanceOfRain}%</p>
+		</div>
+		<div class="flex items-center justify-center space-x-4 mb-4">
+			<img src="../img/icon-humidity.png" alt="Humidity" class="h-6 w-6"/>
+			<p>Humidity: ${moistLevelEmojis}</p>
+		</div>
+		<div class="flex items-center justify-center space-x-4 mb-4">
+			<img src="../img/icon-moon.png" alt="Moon Phase" class="h-6 w-6"/>
+			<p>Moon Phase: ${moonPhaseEmojis}</p>
+		</div>
+		<div class="flex items-center justify-center space-x-4">
+			<img src="../img/icon-uv.png" alt="UV Index" class="h-6 w-6"/>
+			<p>UV Max: ${forecastData.maxUVIndex} at ${forecastData.maxUVTime}</p>
+		</div>
+	</div>
+	`;
 
 	// Update the inner HTML of the element with ID 'result' to display the constructed HTML content
 	document.getElementById("result").innerHTML = resultHTML;
