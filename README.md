@@ -184,23 +184,23 @@ We will be creating our very own weather forecast application. We will be coveri
 #### 3. Update `getForecast()` function
 
   Replace the content inside function `getForecast()` with the code below **after** the backend team has finished:
-    ```js
-    try {
-      // Perform a fetch request to the specified URL, passing the city name as a query parameter
-      const response = await fetch(
-        `http://localhost:3000/getForecast?cityName=${cityName}`
-      );
-      // Parse the JSON response from the server
-      const data = await response.json();
-      // Return the parsed data
-      return data;
-    } catch (error) {
-      // Log any errors encountered during the fetch operation
-      console.error("Error fetching forecast:", error);
-      // Return null to indicate an unsuccessful operation
-      return null;
-    }
-    ```
+  ```js
+  try {
+    // Perform a fetch request to the specified URL, passing the city name as a query parameter
+    const response = await fetch(
+      `http://localhost:3000/getForecast?cityName=${cityName}`
+    );
+    // Parse the JSON response from the server
+    const data = await response.json();
+    // Return the parsed data
+    return data;
+  } catch (error) {
+    // Log any errors encountered during the fetch operation
+    console.error("Error fetching forecast:", error);
+    // Return null to indicate an unsuccessful operation
+    return null;
+  }
+  ```
 
 ### Backend
 
