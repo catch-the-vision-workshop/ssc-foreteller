@@ -87,12 +87,12 @@ We will be creating our very own weather forecast application. We will be coveri
 
 #### 1. Display the moon emoji depending on the phase
 
-    ```js
-    // just so you guys have some idea
-    if (forecastData.moonPhase === "Syntax Moon") {
-      moonPhaseEmojis = 💩
-    }
-    ```
+  ```js
+  // just so you guys have some idea
+  if (forecastData.moonPhase === "Syntax Moon") {
+    moonPhaseEmojis = 💩
+  }
+  ```
   - What this code should do:
     - The code should assigns a specific moon phase emoji to the variable `moonPhaseEmojis` based on the value of `forecastData.moonPhase`.
     - Each moon phase has a corresponding emoji that visually represents it.
